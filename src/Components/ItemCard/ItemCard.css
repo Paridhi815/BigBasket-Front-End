@@ -1,0 +1,55 @@
+.ItemCard{
+    margin: 30px 3%;
+    height: 400px; 
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    box-shadow: 0 0 5px #222;
+    overflow: hidden;
+    background: white;
+}
+.Item-img{
+    height: 17vh;
+    width:100%;
+    background-position: center;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Item-info{
+    font-family: 'Helvetica neue';
+    position: relative;
+    height: 52%;
+    background: white;
+    padding:17px;
+    font-weight: 500;
+}
+.Item-brand{
+    font-family: 'Helvetica neue';
+    font-weight:bold;
+    font-size: 95%;
+    height: 30px;
+}
+.Item-author{
+    font-family: 'Helvetica neue';
+    font-weight:bold;
+    font-size: 95%;
+    height: 30px;
+}
+.Item-title{
+    font-family: 'Helvetica neue';
+    padding-top:20px; 
+    font-weight: 200 ;
+    font-size: 35px;
+}
+.Item-cost{
+    font-size: 20px;
+    position: absolute;
+    right:20px;
+    bottom:14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
