@@ -9,13 +9,16 @@ const FirstPage = props => (
   <div className="FirstPage">
     <Header>
       Paridhi
-      <button className="Header-My-Basket-Button">My Basket {props.totalItemsInCart} items</button>
+      <button
+        className="Header-My-Basket-Button"
+        onClick={() => props.onMyBasketClick()}
+      >My Basket {props.totalItemsInCart} items
+      </button>
     </Header>
     <Body>
       Mohindra
       {
   Object.keys(props.items).map(category =>
-    // console.log('hello', this.state.books[category]);
     (
       <GroupedItems
         category={category}
@@ -32,6 +35,7 @@ const FirstPage = props => (
 FirstPage.propTypes = {
   items: PropTypes.array.isRequired,
   totalItemsInCart: PropTypes.number.isRequired,
+  onMyBasketClick: PropTypes.func.isRequired,
 };
 
 FirstPage.defaultProps = {

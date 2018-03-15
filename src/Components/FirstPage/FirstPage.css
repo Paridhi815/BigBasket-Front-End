@@ -1,0 +1,6 @@
+.Header-My-Basket-Button{
+    display: flex;
+    flex-direction: row-reverse;
+    /* flex-grow: 1; */
+    width:70px;
+}

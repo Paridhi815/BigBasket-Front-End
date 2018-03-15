@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import FirstPage from '../FirstPage/FirstPage';
+import MyBasket from '../MyBasket/MyBasket';
 
 
 // const Axios = require('axios');
@@ -22,12 +23,9 @@ class App extends React.Component {
       method: 'POST',
     }).then(response => response.json())
       .then((itemsObj) => {
-        console.log('pari', itemsObj);
-
         this.setState({
           items: itemsObj.items,
         });
-        console.log('>>>>', this.state.items);
       });
   }
 
@@ -43,13 +41,31 @@ class App extends React.Component {
     });
   }
 
+  onMyBasketClick=() => {
+    this.setState({
+      pageNumber: 1,
+    });
+  }
+
   render() {
+    if (this.state.pageNumber === 0) {
+      return (
+        <div className="App">
+          <FirstPage
+            items={this.state.items}
+            onTotalAddRemoveItems={count => this.onTotalAddRemoveItems(count)}
+            totalItemsInCart={this.state.totalItemsInCart}
+            onMyBasketClick={() => this.onMyBasketClick()}
+          />
+        </div>
+      );
+    }
     return (
       <div className="App">
-        <FirstPage
-          items={this.state.items}
-          onTotalAddRemoveItems={count => this.onTotalAddRemoveItems(count)}
+        <MyBasket
           totalItemsInCart={this.state.totalItemsInCart}
+          items={this.state.items}
+          quantityObj={this.state.quantityObj}
         />
       </div>
     );

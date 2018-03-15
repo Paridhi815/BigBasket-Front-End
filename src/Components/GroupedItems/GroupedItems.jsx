@@ -12,8 +12,6 @@ const GroupedItems = (props) => {
         {props.category}
       </h2>
       <div className="GroupedItems-pane">
-        {console.log(props.items)
-      }
         {props.items.map(item =>
               (
                 <ItemCard
