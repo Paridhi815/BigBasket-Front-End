@@ -45,10 +45,14 @@ class App extends React.Component {
     });
   }
   onDeleteItem=(itemId) => {
-    const obj = this.state.quantityObj;
+    console.log(itemId);
+    const obj = this.state.selectedItems;
+    const obj2 = this.state.quantityObj;
     delete obj[itemId];
+    delete obj2[itemId];
     this.setState({
-      quantityObj: obj,
+      selectedItems: obj,
+      quantityObj: obj2,
     });
   }
   addToCart=(itemObj) => {
@@ -82,6 +86,7 @@ class App extends React.Component {
           totalItemsInCart={this.state.totalItemsInCart}
           items={this.state.items}
           quantityObj={this.state.quantityObj}
+          selectedItems={this.state.selectedItems}
           onDeleteItem={itemId => this.onDeleteItem(itemId)}
         />
       </div>

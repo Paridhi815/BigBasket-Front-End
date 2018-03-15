@@ -57,7 +57,7 @@ class MyBasket extends React.Component {
 
             <MyCartTable
               eachCartItemId={eachCartItemId}
-              items={this.props.items}
+              selectedItem={this.props.selectedItems[eachCartItemId]}
               eachItemQuantity={this.props.quantityObj[eachCartItemId]}
               onDeleteItem={itemId => this.props.onDeleteItem(itemId)}
               appendToCart={orderItem => appendToCart(orderItem)}
