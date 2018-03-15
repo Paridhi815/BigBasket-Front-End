@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import ItemCard from '../ItemCard/ItemCard';
 import './GroupedItems.css';
 
-const GroupedItems = (props) => {
-  console.log('yaaar', props.category);
+const GroupedItems = props =>
+  // console.log('yaaar', props.category);
 
-  return (
+  (
     <div className="GroupedItems">
       <h2 className="Grouped-category">
         {props.category}
@@ -28,8 +28,6 @@ const GroupedItems = (props) => {
       </div>
     </div>
   );
-};
-
 GroupedItems.propTypes = {
   category: PropTypes.arrayOf(),
   items: PropTypes.arrayOf(),

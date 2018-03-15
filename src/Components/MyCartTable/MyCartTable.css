@@ -1,3 +1,7 @@
 .MyCartTable{
-    background-color: blue;
+    background-color: pink;
+}
+
+.MyCartTable-Body{
+    background-color: palegreen;
 }
