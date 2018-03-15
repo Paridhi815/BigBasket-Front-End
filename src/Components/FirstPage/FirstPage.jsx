@@ -8,7 +8,9 @@ import GroupedItems from '../GroupedItems/GroupedItems';
 const FirstPage = props => (
   <div className="FirstPage">
     <Header>
-      Paridhi
+      <div className="random-div" >
+      E-shopper
+      </div>
       <button
         className="Header-My-Basket-Button"
         onClick={() => props.onMyBasketClick()}

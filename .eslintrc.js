@@ -3,7 +3,9 @@ module.exports = {
     "extends": "airbnb",
     "rules":{
         "no-console":0,
-        "react/forbid-prop-types":0
+        "react/forbid-prop-types":0,
+        "array-callback-return":0,
+        "prefer-destructuring":0,
     },
     "env": {
         "browser": true

@@ -4,15 +4,12 @@ import FirstPage from '../FirstPage/FirstPage';
 import MyBasket from '../MyBasket/MyBasket';
 
 
-// const Axios = require('axios');
-
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       pageNumber: 0,
       items: {},
-      ckeckedOutOrNot: false,
       totalItemsInCart: 0,
       quantityObj: {},
     };

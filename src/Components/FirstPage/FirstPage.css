@@ -1,6 +1,11 @@
 .Header-My-Basket-Button{
-    display: flex;
-    flex-direction: row-reverse;
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
     /* flex-grow: 1; */
+    /* align-self: flex-end; */
     width:70px;
+}
+
+.random-div{
+    flex-grow: 1;
 }
