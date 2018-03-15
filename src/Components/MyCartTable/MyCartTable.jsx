@@ -24,6 +24,8 @@ class MyCartTable extends React.Component {
             obj.cost = this.props.items[item][i].cost;
             obj.category = this.props.items[item][i].category;
             obj.itemId = this.props.items[item][i].itemId;
+            obj.description = this.props.items[item][i].description;
+            obj.quantity = this.props.eachItemQuantity;
             arr.push(obj);
           }
         }
@@ -43,11 +45,25 @@ class MyCartTable extends React.Component {
           {
               this.state.allCartItems.map(eachItem => (
                 <div>
-                  <div>{eachItem.brand}</div>
-                  <div>{eachItem.title}</div>
-                  <div>{eachItem.cost}</div>
-                  <div>{eachItem.category}</div>
-                  <div>{eachItem.itemId}</div>
+                  <table>
+                    <tr>
+                      <th>Item Description</th>
+                      <th>Unit Price</th>
+                      <th>Quantity</th>
+                      <th>SubTotal</th>
+                    </tr>
+                    <tr>
+                      <td>{eachItem.brand} {eachItem.title} {eachItem.description}</td>
+                      <td>{eachItem.cost}</td>
+                      <td>{eachItem.quantity}</td>
+                      <td>{eachItem.itemId}</td>
+                    </tr>
+                    {/* <div>{eachItem.brand}</div>
+                    <div>{eachItem.title}</div>
+                    <div>{eachItem.cost}</div>
+                    <div>{eachItem.category}</div>
+                    <div>{eachItem.itemId}</div> */}
+                  </table>
                 </div>))
 
             }

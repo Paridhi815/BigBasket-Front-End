@@ -20,6 +20,7 @@ const MyBasket = props => (
             <MyCartTable
               eachCartItemId={eachCartItemId}
               items={props.items}
+              eachItemQuantity={props.quantityObj[eachCartItemId]}
             />))
       }
     </Body>
