@@ -7,3 +7,10 @@ body{
     min-height: 100vh;
     flex-direction: column;
 }
+
+.Header-My-Basket-Button{
+display: flex;
+flex-direction: row-reverse;
+/* flex-grow: 1; */
+width:30px;
+}

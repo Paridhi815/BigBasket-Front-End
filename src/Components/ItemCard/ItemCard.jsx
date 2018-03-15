@@ -6,20 +6,28 @@ class ItemCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      count: 0,
     };
   }
 
-  //   handleLike(Itemid) {
-  //     const url = this.state.like === 0 ? `/opinion/${Itemid}/1` : `/opinion/${Itemid}/0`;
-  //     fetch(url, {
-  //       method: 'PUT',
-  //     }).then(() => {
-  //       this.setState({
-  //         like: this.state.like === 0 ? 1 : 0,
-  //       });
-  //     });
-  //   }
-
+  removeItem=(index) => {
+    const obj = {};
+    this.setState({
+      count: this.state.count - 1,
+    }, () => {
+      obj[index] = this.state.count;
+      this.props.onTotalAddRemoveItems(obj);
+    });
+  }
+  addItem=(index) => {
+    const obj = {};
+    this.setState({
+      count: this.state.count + 1,
+    }, () => {
+      obj[index] = this.state.count;
+      this.props.onTotalAddRemoveItems(obj);
+    });
+  }
 
   render() {
     return (
@@ -30,18 +38,17 @@ class ItemCard extends React.Component {
           alt="Item"
         />
         <div className="Item-info">
-          {/* <button
-            className={this.state.like === 1 ? 'Item-like-button-liked' : 'Item-like-button'}
-            onClick={() => this.handleLike(this.props.Itemid)}
-          >
-            <i className="material-icons">favorite</i>
-          </button> */}
-          {/* {console.log('this is the stuff', this.props.Items)} */}
 
           <p className="Item-brand" >{this.props.brand}</p>
           <p className="Item-title" >{this.props.title}</p>
           <p className="Item-cost" >{this.props.cost}</p>
           <p className="Item-author" >{this.props.description}</p>
+          <div className="Add-Remove">
+            <button onClick={() => this.removeItem(this.props.itemIndex)}>-
+            </button>
+            <input type="text" value={`${this.state.count} in Basket`} />
+            <button onClick={() => this.addItem(this.props.itemIndex)}>+</button>
+          </div>
         </div>
       </div>
     );
@@ -49,15 +56,14 @@ class ItemCard extends React.Component {
 }
 
 ItemCard.propTypes = {
-//   brand: PropTypes.number.isRequired,
-//   name: PropTypes.string.isRequired,
-//   rating: PropTypes.number.isRequired,
-//   author: PropTypes.string.isRequired,
-//   like: PropTypes.number.isRequired,
+  itemIndex: PropTypes.number.isRequired,
+  brand: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  cost: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.number.isRequired,
+  onTotalAddRemoveItems: PropTypes.func.isRequired,
 };
 
-ItemCard.defaultProps = {
-//   Item: {},
-};
 
 export default ItemCard;

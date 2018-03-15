@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from '../Header/Header';
-import Body from '../Body/Body';
-import GroupedItems from '../GroupedItems/GroupedItems';
+import FirstPage from '../FirstPage/FirstPage';
 
 
 // const Axios = require('axios');
@@ -12,6 +10,9 @@ class App extends React.Component {
     super();
     this.state = {
       items: {},
+      ckeckedOutOrNot: false,
+      totalItemsInCart: 0,
+      tempObj: {},
     };
   }
 
@@ -29,26 +30,27 @@ class App extends React.Component {
       });
   }
 
+  onTotalAddRemoveItems=(obj) => {
+    // const tempObj = {};
+    this.state.tempObj[Object.keys(obj)[0]] = Object.values(obj)[0];
+    let sum = 0;
+    Object.values(this.state.tempObj).forEach((countElement) => {
+      sum += countElement;
+    });
+
+    this.setState({
+      totalItemsInCart: sum,
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Header>
-      Paridhi
-        </Header>
-        <Body>
-      Mohindra
-          {
-  Object.keys(this.state.items).map(category =>
-    // console.log('hello', this.state.books[category]);
-    (
-      <GroupedItems
-        category={category}
-        items={this.state.items[category]}
-        key={category}
-      />
-    ))
-      }
-        </Body>
+        <FirstPage
+          items={this.state.items}
+          onTotalAddRemoveItems={count => this.onTotalAddRemoveItems(count)}
+          totalItemsInCart={this.state.totalItemsInCart}
+        />
       </div>
     );
   }

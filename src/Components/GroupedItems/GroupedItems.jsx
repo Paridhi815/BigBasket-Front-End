@@ -15,16 +15,18 @@ const GroupedItems = (props) => {
         {console.log(props.items)
       }
         {props.items.map(item =>
-(
-  <ItemCard
-    category={item.category}
-    brand={item.brand}
-    title={item.title}
-    cost={item.cost}
-    description={item.description}
-    imageUrl={item.imageUrl}
-  />
-))}
+              (
+                <ItemCard
+                  itemIndex={item.itemId}
+                  category={item.category}
+                  brand={item.brand}
+                  title={item.title}
+                  cost={item.cost}
+                  description={item.description}
+                  imageUrl={item.imageUrl}
+                  onTotalAddRemoveItems={count => props.onTotalAddRemoveItems(count)}
+                />
+              ))}
       </div>
     </div>
   );

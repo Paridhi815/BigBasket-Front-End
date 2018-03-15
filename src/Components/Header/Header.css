@@ -1,5 +1,6 @@
 .Header{
     display: flex;
+    flex-direction: row;
     background-color: rgb(95,65,177);
     height: 190px;
 }
