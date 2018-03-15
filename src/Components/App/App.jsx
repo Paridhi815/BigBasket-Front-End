@@ -9,10 +9,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      pageNumber: 0,
       items: {},
       ckeckedOutOrNot: false,
       totalItemsInCart: 0,
-      tempObj: {},
+      quantityObj: {},
     };
   }
 
@@ -31,10 +32,9 @@ class App extends React.Component {
   }
 
   onTotalAddRemoveItems=(obj) => {
-    // const tempObj = {};
-    this.state.tempObj[Object.keys(obj)[0]] = Object.values(obj)[0];
+    this.state.quantityObj[Object.keys(obj)[0]] = Object.values(obj)[0];
     let sum = 0;
-    Object.values(this.state.tempObj).forEach((countElement) => {
+    Object.values(this.state.quantityObj).forEach((countElement) => {
       sum += countElement;
     });
 

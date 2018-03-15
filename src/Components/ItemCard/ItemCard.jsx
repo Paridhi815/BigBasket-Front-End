@@ -15,8 +15,14 @@ class ItemCard extends React.Component {
     this.setState({
       count: this.state.count - 1,
     }, () => {
-      obj[index] = this.state.count;
-      this.props.onTotalAddRemoveItems(obj);
+      if (this.state.count < 0) {
+        this.setState({
+          count: 0,
+        });
+      } else {
+        obj[index] = this.state.count;
+        this.props.onTotalAddRemoveItems(obj);
+      }
     });
   }
   addItem=(index) => {
