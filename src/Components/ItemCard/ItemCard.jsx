@@ -37,7 +37,7 @@ class ItemCard extends React.Component {
 
   render() {
     return (
-      <div className="ItemCard">
+      <div className={this.props.availableNumber === 0 ? 'ItemCard zero' : 'ItemCard'}>
         <img
           src={this.props.imageUrl}
           className="Item-img"
@@ -53,7 +53,11 @@ class ItemCard extends React.Component {
             <button onClick={() => this.removeItem(this.props.itemIndex)}>-
             </button>
             <input type="text" value={`${this.state.count} in Basket`} />
-            <button onClick={() => this.addItem(this.props.itemIndex)}>+</button>
+            <button
+              disabled={this.props.availableNumber === 0}
+              onClick={() => this.addItem(this.props.itemIndex)}
+            >+
+            </button>
           </div>
         </div>
       </div>
@@ -69,6 +73,7 @@ ItemCard.propTypes = {
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.number.isRequired,
   onTotalAddRemoveItems: PropTypes.func.isRequired,
+  availableNumber: PropTypes.number.isRequired,
 };
 
 

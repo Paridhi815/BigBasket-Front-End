@@ -15,6 +15,7 @@ const GroupedItems = props =>
         {props.items.map(item =>
               (
                 <ItemCard
+                  availableNumber={item.availableQuantity}
                   itemIndex={item.itemId}
                   category={item.category}
                   brand={item.brand}

@@ -23,7 +23,7 @@
     font-family: 'Helvetica neue';
     position: relative;
     height: 52%;
-    background: white;
+    /* background: white; */
     padding:17px;
     font-weight: 500;
 }
@@ -58,4 +58,8 @@
     flex-direction: row;
     margin-left: 20%;
     margin-top: 20%;
+}
+
+.zero{
+    background: #dedede;
 }
