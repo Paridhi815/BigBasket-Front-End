@@ -10,7 +10,7 @@ class ItemCard extends React.Component {
     };
   }
 
-  removeItem=(index) => {
+  removeItem=(item) => {
     const obj = {};
     this.setState({
       count: this.state.count - 1,
@@ -20,18 +20,19 @@ class ItemCard extends React.Component {
           count: 0,
         });
       } else {
-        obj[index] = this.state.count;
+        obj[item.itemId] = this.state.count;
         this.props.onTotalAddRemoveItems(obj);
       }
+      this.props.addToCart(item);
     });
   }
-  addItem=(index) => {
+  addItem=(item) => {
     const obj = {};
+    obj[item.itemId] = this.state.count + 1;
+    this.props.onTotalAddRemoveItems(obj);
+    this.props.addToCart(item);
     this.setState({
       count: this.state.count + 1,
-    }, () => {
-      obj[index] = this.state.count;
-      this.props.onTotalAddRemoveItems(obj);
     });
   }
 
@@ -50,12 +51,12 @@ class ItemCard extends React.Component {
           <p className="Item-cost" >{this.props.cost}</p>
           <p className="Item-author" >{this.props.description}</p>
           <div className="Add-Remove">
-            <button onClick={() => this.removeItem(this.props.itemIndex)}>-
+            <button onClick={() => this.removeItem(this.props.item)}>-
             </button>
             <input type="text" value={`${this.state.count} in Basket`} />
             <button
               disabled={this.props.availableNumber === 0}
-              onClick={() => this.addItem(this.props.itemIndex)}
+              onClick={() => this.addItem(this.props.item)}
             >+
             </button>
           </div>

@@ -26,6 +26,7 @@ const FirstPage = props => (
         category={category}
         items={props.items[category]}
         key={category}
+        addToCart={obj => props.addToCart(obj)}
         onTotalAddRemoveItems={count => props.onTotalAddRemoveItems(count)}
       />
     ))

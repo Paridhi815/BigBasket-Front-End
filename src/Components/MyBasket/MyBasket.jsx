@@ -12,7 +12,7 @@ class MyBasket extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      allCart: [],
     };
   }
 
@@ -28,6 +28,14 @@ class MyBasket extends React.Component {
   }
 
   render() {
+    const appendToCart = (orderItem) => {
+      let arrayModify = this.state.allCart;
+      arrayModify = arrayModify.concat(orderItem);
+      //   console.log('##', this.state.allCart);
+      this.setState({
+        allCart: arrayModify,
+      });
+    };
     return (
 
       <div className="MyBasket">
@@ -51,6 +59,8 @@ class MyBasket extends React.Component {
               eachCartItemId={eachCartItemId}
               items={this.props.items}
               eachItemQuantity={this.props.quantityObj[eachCartItemId]}
+              onDeleteItem={itemId => this.props.onDeleteItem(itemId)}
+              appendToCart={orderItem => appendToCart(orderItem)}
             />))
       }
 

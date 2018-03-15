@@ -28,10 +28,10 @@ class MyCartTable extends React.Component {
               obj.quantity = this.props.eachItemQuantity;
               obj.subTotal = (this.props.items[item][i].cost) * (this.props.eachItemQuantity);
               arr.push(obj);
+              this.props.appendToCart(obj);
             }
           }
         });
-
         this.setState({
           allCartItems: arr,
         }, () => {
@@ -55,6 +55,7 @@ class MyCartTable extends React.Component {
                   <td>{eachItem.cost}</td>
                   <td>{eachItem.quantity}</td>
                   <td>{eachItem.subTotal}</td>
+                  <td><button onClick={() => this.props.onDeleteItem(eachItem.itemId)}>x</button></td>
                 </tr>
 
                 ))

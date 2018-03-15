@@ -12,6 +12,7 @@ class App extends React.Component {
       items: {},
       totalItemsInCart: 0,
       quantityObj: {},
+      selectedItems: {},
     };
   }
 
@@ -43,7 +44,24 @@ class App extends React.Component {
       pageNumber: 1,
     });
   }
+  onDeleteItem=(itemId) => {
+    const obj = this.state.quantityObj;
+    delete obj[itemId];
+    this.setState({
+      quantityObj: obj,
+    });
+  }
+  addToCart=(itemObj) => {
+    console.log(itemObj, '>>>>>');
 
+    const newObject = this.state.selectedItems;
+    if (this.state.quantityObj[itemObj.itemId] === 0) { delete newObject[itemObj.itemId]; } else {
+      newObject[itemObj.itemId] = itemObj;
+    }
+    this.setState({
+      selectedItems: newObject,
+    });
+  }
   render() {
     if (this.state.pageNumber === 0) {
       return (
@@ -53,6 +71,7 @@ class App extends React.Component {
             onTotalAddRemoveItems={count => this.onTotalAddRemoveItems(count)}
             totalItemsInCart={this.state.totalItemsInCart}
             onMyBasketClick={() => this.onMyBasketClick()}
+            addToCart={obj => this.addToCart(obj)}
           />
         </div>
       );
@@ -63,6 +82,7 @@ class App extends React.Component {
           totalItemsInCart={this.state.totalItemsInCart}
           items={this.state.items}
           quantityObj={this.state.quantityObj}
+          onDeleteItem={itemId => this.onDeleteItem(itemId)}
         />
       </div>
     );

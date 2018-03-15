@@ -23,6 +23,8 @@ const GroupedItems = props =>
                   cost={item.cost}
                   description={item.description}
                   imageUrl={item.imageUrl}
+                  item={item}
+                  addToCart={obj => props.addToCart(obj)}
                   onTotalAddRemoveItems={count => props.onTotalAddRemoveItems(count)}
                 />
               ))}
