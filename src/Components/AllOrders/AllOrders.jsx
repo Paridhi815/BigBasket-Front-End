@@ -60,17 +60,15 @@ class AllOrders extends React.Component {
   //   };
 
   render() {
-    //   const
     return (
-    //   <div>Anmol</div>
       <div className="AllOrders">
         {
     this.state.orderArray.map((orders) => {
-        // console.log(orders[0].orderdetails, '%%');
+        // console.log(orders[0].orderdetails, 'mckinsey');
         if (orders[0].orderdetails.length !== 0) {
        return orders[0].orderdetails.map((eachItem) => {
-            console.log(eachItem, '*');
-            console.log(this.state.itemObj[eachItem.itemId], '$$');
+            console.log(eachItem, 'pari');
+            console.log(this.state.itemObj[eachItem.itemId], 'dhi');
     if (this.state.itemObj[eachItem.itemId] !== undefined) {
       return (
         <div>
@@ -90,7 +88,7 @@ class AllOrders extends React.Component {
   }
 }
 AllOrders.propTypes = {
-  children: PropTypes.node.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 AllOrders.defaultProps = {

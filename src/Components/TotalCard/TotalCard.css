@@ -1,5 +1,18 @@
 .TotalCard{
     width:20%;
-    height:20%;
-    background-color: (242,242,242);
+    height:170px;
+    background-color: rgb(242,242,242);
+    margin-top:10%;
+    margin-left:60%;
+}
+
+.Checkout-Button{
+margin-left:90px;
+margin-top:60px;
+    background-color: rgb(242,219,145);
+}
+
+.Line{
+    padding: 10px;
+    color:rgb(0,0,0,0,5);
 }

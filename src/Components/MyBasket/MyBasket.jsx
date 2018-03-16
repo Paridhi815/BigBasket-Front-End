@@ -13,10 +13,12 @@ class MyBasket extends React.Component {
     super(props);
     this.state = {
       allCart: [],
+      total: 0,
     };
   }
-
-
+  componentWillMount() {
+    this.getTotal();
+  }
   onCheckout=() => {
     Axios({
       method: 'POST',
@@ -24,33 +26,46 @@ class MyBasket extends React.Component {
       data: {
         orderDetailsObj: this.props.quantityObj,
       },
+    }).then(() => {
+      this.props.onAllOrdersClick();
     });
   }
 
+  getTotal = () => {
+    let subtotal = this.state.total;
+    Object.keys(this.props.quantityObj).map((eachCartItemId) => {
+      const costValue = this.props.selectedItems[eachCartItemId].cost;
+      subtotal += costValue * this.props.quantityObj[eachCartItemId];
+    });
+    // const tempTotal = subtotal + this.state.total;
+    this.setState({
+      total: subtotal,
+    });
+  }
+
+  appendToCart = (orderItem) => {
+    let arrayModify = this.state.allCart;
+    arrayModify = arrayModify.concat(orderItem);
+    this.setState({
+      allCart: arrayModify,
+    });
+  };
+
   render() {
-    const appendToCart = (orderItem) => {
-      let arrayModify = this.state.allCart;
-      arrayModify = arrayModify.concat(orderItem);
-      //   console.log('##', this.state.allCart);
-      this.setState({
-        allCart: arrayModify,
-      });
-    };
     return (
 
       <div className="MyBasket">
-        <Header>
-      Paridhi
-          <button className="Header-My-Basket-Button">My Basket {this.props.totalItemsInCart} items</button>
-        </Header>
+        <Header
+          totalItemsInCart={this.props.totalItemsInCart}
+        />
         <Body>
-      Mohindra
           <table>
             <tr>
               <th>Item Description</th>
               <th>Unit Price</th>
               <th>Quantity</th>
               <th>SubTotal</th>
+              <th />
             </tr>
             {
           Object.keys(this.props.quantityObj).map(eachCartItemId => (
@@ -60,13 +75,15 @@ class MyBasket extends React.Component {
               selectedItem={this.props.selectedItems[eachCartItemId]}
               eachItemQuantity={this.props.quantityObj[eachCartItemId]}
               onDeleteItem={itemId => this.props.onDeleteItem(itemId)}
-              appendToCart={orderItem => appendToCart(orderItem)}
+              appendToCart={orderItem => this.appendToCart(orderItem)}
+              sendTotal={totalValue => this.sendTotal(totalValue)}
             />))
       }
 
           </table>
           <TotalCard
             onCheckout={() => this.onCheckout()}
+            total={this.state.total}
           />
         </Body>
       </div>
@@ -75,9 +92,11 @@ class MyBasket extends React.Component {
 }
 
 MyBasket.propTypes = {
+  onAllOrdersClick: PropTypes.func.isRequired,
   totalItemsInCart: PropTypes.number,
   quantityObj: PropTypes.object.isRequired,
-  items: PropTypes.object.isRequired,
+  selectedItems: PropTypes.object.isRequired,
+  onDeleteItem: PropTypes.func.isRequired,
 };
 
 MyBasket.defaultProps = {

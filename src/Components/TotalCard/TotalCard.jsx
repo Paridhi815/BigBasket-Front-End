@@ -15,7 +15,16 @@ class TotalCard extends React.Component {
   render() {
     return (
       <div className="TotalCard">
-        <button onClick={() => this.props.onCheckout()}>Checkout</button>
+
+        <p>TOTAL Rs.{this.props.total}</p>
+        <hr />
+        <button
+          className="Checkout-Button"
+          onClick={() => this.props.onCheckout()}
+        >
+        Checkout
+          <i className="material-icons">arrow_forward</i>
+        </button>
       </div>
     );
   }
@@ -23,9 +32,11 @@ class TotalCard extends React.Component {
 
 TotalCard.propTypes = {
   onCheckout: PropTypes.func.isRequired,
+  total: PropTypes.number,
 };
 
 TotalCard.defaultProps = {
+  total: 0,
 };
 
 export default TotalCard;

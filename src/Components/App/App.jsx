@@ -97,6 +97,7 @@ class App extends React.Component {
             quantityObj={this.state.quantityObj}
             selectedItems={this.state.selectedItems}
             onDeleteItem={itemId => this.onDeleteItem(itemId)}
+            onAllOrdersClick={() => this.onAllOrdersClick()}
           />
         </div>
       );

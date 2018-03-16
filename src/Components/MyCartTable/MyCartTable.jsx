@@ -6,59 +6,34 @@ class MyCartTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allCartItems: [],
     };
   }
-  // componentDidMount() {
-  // this.populateBody();
-  // }
-  //     populateBody=() => {
-  //       const arr = this.state.allCartItems;
-  //       Object.keys(this.props.items).map((item) => {
-  //         console.log(this.props.items[item]);
-  //         for (let i = 0; i < this.props.items[item].length; i += 1) {
-  //           if (this.props.items[item][i].itemId === Number(this.props.eachCartItemId)) {
-  //             const obj = {};
-  //             obj.brand = this.props.items[item][i].brand;
-  //             obj.title = this.props.items[item][i].title;
-  //             obj.cost = this.props.items[item][i].cost;
-  //             obj.category = this.props.items[item][i].category;
-  //             obj.itemId = this.props.items[item][i].itemId;
-  //             obj.description = this.props.items[item][i].description;
-  //             obj.quantity = this.props.eachItemQuantity;
-  //             obj.subTotal = (this.props.items[item][i].cost) * (this.props.eachItemQuantity);
-  //             arr.push(obj);
-  //             this.props.appendToCart(obj);
-  //           }
-  //         }
-  //       });
-  //       this.setState({
-  //         allCartItems: arr,
-  //       }, () => {
-  //         console.log('here', this.state.allCartItems);
-  //       });
-  //     }
 
   render() {
-    //   const arr = [];
-    //   this.state.arr.push(this.state.allCartItems);
     return (
 
       <tbody className="MyCartTable">
 
         {
-              // this.props.allCartItems.map(eachItem => (
-
-
           <tr>
-            <td>{this.props.selectedItem.brand} {this.props.selectedItem.title} {this.props.selectedItem.description}</td>
+            <td>
+              <div className="Item-Description">{this.props.selectedItem.brand}
+                <div className="Name-Description">
+                  {this.props.selectedItem.title}
+                  {this.props.selectedItem.description}
+                </div>
+              </div>
+            </td>
             <td>{this.props.selectedItem.cost}</td>
             <td>{this.props.eachItemQuantity}</td>
             <td>{Number(this.props.eachItemQuantity) * Number(this.props.selectedItem.cost)}</td>
-            <td><button onClick={() => this.props.onDeleteItem(this.props.eachCartItemId)}>x</button></td>
+            <td>
+              <button
+                onClick={() => this.props.onDeleteItem(this.props.eachCartItemId)}
+              >x
+              </button>
+            </td>
           </tr>
-
-                // ))
 
             }
 
@@ -68,9 +43,10 @@ class MyCartTable extends React.Component {
 }
 
 MyCartTable.propTypes = {
-  items: PropTypes.object.isRequired,
+  selectedItem: PropTypes.object.isRequired,
   eachItemQuantity: PropTypes.number,
   eachCartItemId: PropTypes.number,
+  onDeleteItem: PropTypes.func.isRequired,
 };
 
 MyCartTable.defaultProps = {
