@@ -12,7 +12,7 @@
 }
 .Item-img{
     height: 28vh;
-    width:100%;
+    width:90%;
     background-position: center;
     object-fit: cover;
     /* margin-left: auto;
@@ -27,6 +27,7 @@
     /* background: white; */
     padding:17px;
     font-weight: 500;
+    padding-top:0;
 }
 .Item-brand{
     font-family: 'Helvetica neue';
@@ -53,7 +54,7 @@
 
 .Count-Box{
     background:  rgb(244,243,241);
-    height:48%;
+    height:80px;
 }
 .Item-cost{
     font-size: 20px;
@@ -67,7 +68,7 @@
     display: flex;
     flex-direction: row;
     margin-left: 20%;
-    margin-top: 20%;
+    margin-top: 0%;
 }
 
 .NoOfItems{
@@ -83,4 +84,9 @@
 .Add-Item-Button{
     border-radius: none;
     border-left:none;
+}
+
+.Inner-Div{
+    width: 90%;
+    height: 50%;
 }

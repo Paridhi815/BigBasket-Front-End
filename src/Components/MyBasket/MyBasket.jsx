@@ -60,7 +60,7 @@ class MyBasket extends React.Component {
           onMyBasketClick={() => this.props.onMyBasketClick()}
         />
         <Body>
-          <table>
+          <table className="Cart-Table">
             <tr>
               <th>Item Description</th>
               <th>Unit Price</th>
