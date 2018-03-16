@@ -98,6 +98,7 @@ class App extends React.Component {
             selectedItems={this.state.selectedItems}
             onDeleteItem={itemId => this.onDeleteItem(itemId)}
             onAllOrdersClick={() => this.onAllOrdersClick()}
+            onMyBasketClick={() => this.onMyBasketClick()}
           />
         </div>
       );
@@ -106,6 +107,9 @@ class App extends React.Component {
       <div className="App">
         <AllOrders
           items={this.state.items}
+          totalItemsInCart={this.state.totalItemsInCart}
+          onAllOrdersClick={() => this.onAllOrdersClick()}
+          onMyBasketClick={() => this.onMyBasketClick()}
         />
       </div>
     );

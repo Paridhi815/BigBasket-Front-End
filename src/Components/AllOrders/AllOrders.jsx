@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './AllOrders.css';
+import Header from '../Header/Header';
 
 const Axios = require('axios');
 
@@ -36,33 +37,28 @@ class AllOrders extends React.Component {
     });
   }
 
-  //   categorize = () => {
-  //     let categorizedArray = {};
-  //     this.state.orderArray.map((orders) => {
-  //     // console.log(orders[0].orderdetails, '%%');
-  //       if (orders[0].orderdetails.length !== 0) {
-  //         categorizedArray = orders[0].orderdetails.reduce((categorizeArray, eachItem) => {
-  //           console.log(eachItem, '*');
-  //           console.log(this.state.itemObj[eachItem.itemId], '$$');
-  //           if (this.state.itemObj[eachItem.itemId] !== undefined) {
-  //             if (this.state.itemObj[eachItem.itemId].category in categorizedArray) {
-  //               categorizedArray[this.state.itemObj[eachItem.itemId].category] = this.state.itemObj[eachItem.itemId].category.concat(eachItem);
-  //             } else {
-  //               categorizedArray[this.state.itemObj[eachItem.itemId].category] = eachItem;
-  //             }
-  //           }
-  //         }, {});
-  //       }
-  //     });
-  //     this.setState({
-  //       categorizedArray,
-  //     });
-  //   };
-
   render() {
     return (
       <div className="AllOrders">
-        {
+        <Header
+          totalItemsInCart={this.props.totalItemsInCart}
+          onAllOrdersClick={() => this.props.onAllOrdersClick()}
+
+          onMyBasketClick={() => this.props.onMyBasketClick()}
+        />
+        <p className="All-Orders-Display">All Orders</p>
+        <hr />
+        <p className="Past-Orders-Display">Past Orders(10)</p>
+        <table className="Order-Table">
+          <tr>
+            <th>Item Description</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>SubTotal</th>
+            <th />
+          </tr>
+          {
+
     this.state.orderArray.map((orders) => {
         // console.log(orders[0].orderdetails, 'mckinsey');
         if (orders[0].orderdetails.length !== 0) {
@@ -71,52 +67,41 @@ class AllOrders extends React.Component {
             console.log(this.state.itemObj[eachItem.itemId], 'dhi');
     if (this.state.itemObj[eachItem.itemId] !== undefined) {
       return (
-        <div>
-          <div>{this.state.itemObj[eachItem.itemId].brand} {this.state.itemObj[eachItem.itemId].title} {this.state.itemObj[eachItem.itemId].description}</div>
-          <div>{this.state.itemObj[eachItem.itemId].cost}</div>
-          <div>{eachItem.quantity}</div>
-          <div>{Number(this.state.itemObj[eachItem.itemId].cost) * Number(eachItem.quantity)}</div>
-        </div>
+        <tr>
+          <td>
+            <div className="Item-Description">
+              {this.state.itemObj[eachItem.itemId].brand}
+              <div className="Name-Description">
+                {this.state.itemObj[eachItem.itemId].title}
+                &nbsp;{this.state.itemObj[eachItem.itemId].description}
+              </div>
+            </div>
+          </td>
+          <td>{this.state.itemObj[eachItem.itemId].cost}</td>
+          <td>{eachItem.quantity}</td>
+          <td>{Number(this.state.itemObj[eachItem.itemId].cost) * Number(eachItem.quantity)}</td>
+        </tr>
                   );
     }
         });
     }
     })
     }
+        </table>
       </div>
     );
   }
 }
 AllOrders.propTypes = {
   items: PropTypes.array.isRequired,
+  totalItemsInCart: PropTypes.number,
+  onAllOrdersClick: PropTypes.func.isRequired,
+  onMyBasketClick: PropTypes.func.isRequired,
 };
 
 AllOrders.defaultProps = {
+  totalItemsInCart: 0,
 };
 
 export default AllOrders;
 
-
-// const categorize = () => {
-//     let categorizedArray;
-//     this.state.orderArray.map((orders) => {
-//       // console.log(orders[0].orderdetails, '%%');
-//       if (orders[0].orderdetails.length !== 0) {
-//         categorizedArray = orders[0].orderdetails.reduce((categorizedArray, eachItem) => {
-//           console.log(eachItem, '*');
-//           console.log(this.state.itemObj[eachItem.itemId], '$$');
-//           if (this.state.itemObj[eachItem.itemId] !== undefined) {
-//             if (this.state.itemObj[eachItem.itemId].category in categorizedArray) {
-//               categorizedArray[this.state.itemObj[eachItem.itemId].category] = this.state.itemObj[eachItem.itemId].category.concat(eachItem);
-//             } else {
-//               categorizedArray[this.state.itemObj[eachItem.itemId].category] = eachItem;
-//             }
-//             return categorizedArray;
-//           }
-//         }, {});
-//       }
-//     });
-//     this.setState({
-//       categorizedArray,
-//     });
-//   };

@@ -37,7 +37,6 @@ class MyBasket extends React.Component {
       const costValue = this.props.selectedItems[eachCartItemId].cost;
       subtotal += costValue * this.props.quantityObj[eachCartItemId];
     });
-    // const tempTotal = subtotal + this.state.total;
     this.setState({
       total: subtotal,
     });
@@ -57,6 +56,8 @@ class MyBasket extends React.Component {
       <div className="MyBasket">
         <Header
           totalItemsInCart={this.props.totalItemsInCart}
+          onAllOrdersClick={() => this.props.onAllOrdersClick()}
+          onMyBasketClick={() => this.props.onMyBasketClick()}
         />
         <Body>
           <table>
@@ -97,6 +98,7 @@ MyBasket.propTypes = {
   quantityObj: PropTypes.object.isRequired,
   selectedItems: PropTypes.object.isRequired,
   onDeleteItem: PropTypes.func.isRequired,
+  onMyBasketClick: PropTypes.func.isRequired,
 };
 
 MyBasket.defaultProps = {
