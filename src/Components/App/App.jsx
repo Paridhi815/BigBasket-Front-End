@@ -99,6 +99,7 @@ class App extends React.Component {
             onDeleteItem={itemId => this.onDeleteItem(itemId)}
             onAllOrdersClick={() => this.onAllOrdersClick()}
             onMyBasketClick={() => this.onMyBasketClick()}
+            disableValue={Object.keys(this.state.selectedItems).length === 0}
           />
         </div>
       );
