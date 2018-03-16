@@ -33,6 +33,12 @@ class ItemCard extends React.Component {
     this.props.addToCart(item);
     this.setState({
       count: this.state.count + 1,
+    }, () => {
+      if (this.state.count > this.props.availableNumber) {
+        this.setState({
+          count: this.props.availableNumber,
+        });
+      }
     });
   }
 
@@ -48,18 +54,30 @@ class ItemCard extends React.Component {
 
           <p className="Item-brand" >{this.props.brand}</p>
           <p className="Item-title" >{this.props.title}</p>
-          <p className="Item-cost" >{this.props.cost}</p>
-          <p className="Item-author" >{this.props.description}</p>
-          <div className="Add-Remove">
-            <button onClick={() => this.removeItem(this.props.item)}>-
-            </button>
-            <input type="text" value={`${this.state.count} in Basket`} />
-            <button
-              disabled={this.props.availableNumber === 0}
-              onClick={() => this.addItem(this.props.item)}
-            >+
-            </button>
+          <p className="Item-description" >{this.props.description}</p>
+          <div className="Count-Box">
+            <p className="Item-cost" >MRP {this.props.cost}/-</p>
+            <div className="Add-Remove">
+              <button
+                className="Remove-Item-Button"
+                disabled={this.props.availableNumber === 0}
+                onClick={() => this.removeItem(this.props.item)}
+              >-
+              </button>
+              <input
+                className={this.state.count === 0 ? 'NoOfItems zero' : 'NoOfItems'}
+                type="text"
+                value={`${this.state.count} in Basket`}
+              />
+              <button
+                className="Add-Item-Button"
+                disabled={this.state.count > this.props.availableNumber}
+                onClick={() => this.addItem(this.props.item)}
+              >+
+              </button>
+            </div>
           </div>
+          {this.props.availableNumber} items available totally
         </div>
       </div>
     );
@@ -67,7 +85,8 @@ class ItemCard extends React.Component {
 }
 
 ItemCard.propTypes = {
-  itemIndex: PropTypes.number.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
   brand: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,

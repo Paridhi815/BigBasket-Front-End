@@ -9,16 +9,25 @@ const FirstPage = props => (
   <div className="FirstPage">
     <Header>
       <div className="random-div" >
-      E-shopper
+        <i className="material-icons shopping-cart">shopping_cart</i>
+        <span className="Shopper-Text" >E-shopper</span>
       </div>
+      <button
+        className="Header-All-Orders-Button"
+        onClick={() => props.onAllOrdersClick()}
+      >All Orders
+      </button>
       <button
         className="Header-My-Basket-Button"
         onClick={() => props.onMyBasketClick()}
-      >My Basket {props.totalItemsInCart} items
+      >
+        <i className="material-icons red">shopping_basket</i>
+      My Basket
+        <br />
+        {props.totalItemsInCart} items
       </button>
     </Header>
     <Body>
-      Mohindra
       {
   Object.keys(props.items).map(category =>
     (
@@ -39,6 +48,7 @@ FirstPage.propTypes = {
   items: PropTypes.array.isRequired,
   totalItemsInCart: PropTypes.number.isRequired,
   onMyBasketClick: PropTypes.func.isRequired,
+  onAllOrdersClick: PropTypes.func.isRequired,
 };
 
 FirstPage.defaultProps = {

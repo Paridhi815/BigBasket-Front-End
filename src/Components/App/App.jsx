@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import FirstPage from '../FirstPage/FirstPage';
 import MyBasket from '../MyBasket/MyBasket';
+import AllOrders from '../AllOrders/AllOrders';
 
 
 class App extends React.Component {
@@ -44,6 +45,13 @@ class App extends React.Component {
       pageNumber: 1,
     });
   }
+
+  onAllOrdersClick=() => {
+    this.setState({
+      pageNumber: 2,
+    });
+  }
+
   onDeleteItem=(itemId) => {
     console.log(itemId);
     const obj = this.state.selectedItems;
@@ -76,18 +84,27 @@ class App extends React.Component {
             totalItemsInCart={this.state.totalItemsInCart}
             onMyBasketClick={() => this.onMyBasketClick()}
             addToCart={obj => this.addToCart(obj)}
+            onAllOrdersClick={() => this.onAllOrdersClick()}
+          />
+        </div>
+      );
+    } else if (this.state.pageNumber === 1) {
+      return (
+        <div className="App">
+          <MyBasket
+            totalItemsInCart={this.state.totalItemsInCart}
+            items={this.state.items}
+            quantityObj={this.state.quantityObj}
+            selectedItems={this.state.selectedItems}
+            onDeleteItem={itemId => this.onDeleteItem(itemId)}
           />
         </div>
       );
     }
     return (
       <div className="App">
-        <MyBasket
-          totalItemsInCart={this.state.totalItemsInCart}
+        <AllOrders
           items={this.state.items}
-          quantityObj={this.state.quantityObj}
-          selectedItems={this.state.selectedItems}
-          onDeleteItem={itemId => this.onDeleteItem(itemId)}
         />
       </div>
     );

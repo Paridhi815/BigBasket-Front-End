@@ -1,5 +1,4 @@
 .Body{
-    background-color: rgb(235,232,247);
     display: flex;
     flex-direction: column;
     flex-grow: 1;

@@ -3,4 +3,5 @@
     flex-direction: row;
     background-color: white;
     height: 70px;
+    align-items: center;
 }

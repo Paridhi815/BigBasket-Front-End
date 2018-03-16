@@ -1,11 +1,25 @@
 .Header-My-Basket-Button{
-    /* display: flex; */
-    /* flex-direction: row-reverse; */
-    /* flex-grow: 1; */
-    /* align-self: flex-end; */
-    width:70px;
+    width:130px;
+    display: flex;
+    flex-direction: row;
 }
 
 .random-div{
     flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.material-icons {
+    color:rgb(0,0,0,0.6);
+    font-size: 30px;
+}
+.Header-All-Orders-Button{
+    border:none;
+    font-size: 20px;
+}
+
+.red{
+    color:red;
 }

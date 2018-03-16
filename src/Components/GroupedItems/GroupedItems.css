@@ -1,6 +1,6 @@
 .GroupedItems-pane{
     padding: 10px;
-    background-color: pink;
+    background-color: white;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
